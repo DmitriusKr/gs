@@ -77,7 +77,7 @@ wss.on("connection", (ws) => {
 server.listen(PORT, () => {
     console.log(`Server runing on http://localhost:${PORT}`);
 });
-var htmlPath = path.resolve(__dirname, '..',  'client/index.html');
+var htmlPath = path.resolve(__dirname, '..',  'index.html');
 app.get('/', function (req, res) {  
       res
       .status(200)
