@@ -1,0 +1,20 @@
+{
+  "name": "gs",
+  "version": "1.0.0",
+  "description": "lamp",
+  "main": "./server/server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server/server.js"
+  },
+  "keywords": [
+    "lamp",
+    "toggle"
+  ],
+  "author": "DmitriuS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socketio": "^1.0.0"
+  }
+}
