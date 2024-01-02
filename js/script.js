@@ -44,6 +44,8 @@ socket.onmessage = function(event) {
   else {
     fileContent.innerHTML = 'Статус включения: '+ data.status;
   }
+  let volume = data.volume;
+  
 };
 generateButton.addEventListener("click", () => {
   let data = JSON.stringify({

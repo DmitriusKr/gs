@@ -18,11 +18,14 @@ wss.on("connection", (ws) => {
     ws.on("message", (data) => {
 
         data =JSON.parse(data);
-                
+        const pathVol = './server/files/volume.txt';
+
         if (data.event === 'volume') {
             console.log(data.value);
-            
+            fs.writeFileSync(pathVol, data.value, 'utf8');
+
         }
+
         const path = './server/files/stat.txt';
 
         if (data.event === "check") {
@@ -32,8 +35,16 @@ wss.on("connection", (ws) => {
             else {
                 var status = '0';
             }
+            if (fs.existsSync(pathVol)) {
+                var volume =fs.readFileSync(path, 'utf8');
+            }
+            else {
+                var volume = '0';
+            }
+
             const message = JSON.stringify({
                 status: status,
+                volume: volume,
             });
             ws.send(message);
         }
