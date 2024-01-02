@@ -16,10 +16,16 @@ wss.on("connection", (ws) => {
     ws.on("error", (e) => ws.send(e));
   
     ws.on("message", (data) => {
-        console.log(data.toString());
+
+        data =JSON.parse(data);
+                
+        if (data.event === 'volume') {
+            console.log(data.value);
+            
+        }
         const path = './server/files/stat.txt';
 
-        if (data.toString() === "check") {
+        if (data.event === "check") {
             if (fs.existsSync(path)) {
                 var status =fs.readFileSync(path, 'utf8');
             }
@@ -33,7 +39,7 @@ wss.on("connection", (ws) => {
         }
 
 
-        if (data.toString() === "toggle") {
+        if (data.event === "toggle") {
             const start= new Date().getTime();
                     
             if (fs.existsSync(path)) {

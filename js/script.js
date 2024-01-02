@@ -4,10 +4,26 @@ const socket = new WebSocket(`ws://localhost:${PORT}`);
 const generateButton = document.getElementById("generateButton");
 const fileContent = document.getElementById("fileContent");
 const lamp = document.getElementById("lamp");
+const volume = document.getElementById("volume");
+const vol = document.getElementById("vol");
+
+volume.oninput = function (e) {
+  val = e.target.value;
+//  console.log (val);
+  let data = JSON.stringify({
+    event:'volume',
+    value:val
+  });
+  socket.send(data);
+  vol.innerHTML = val;
+}
 
 socket.onopen = function(e) {
   console.log("open"); 
-  socket.send("check");
+  let data = JSON.stringify({
+    event:"check"
+  });
+  socket.send(data);
 };
 
 socket.onmessage = function(event) {
@@ -30,7 +46,10 @@ socket.onmessage = function(event) {
   }
 };
 generateButton.addEventListener("click", () => {
-  socket.send("toggle");
+  let data = JSON.stringify({
+    event:"toggle"
+  });
+    socket.send(data);
 });   
 socket.addEventListener("close", (event) => {
     if (event.wasClean) {

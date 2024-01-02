@@ -7,11 +7,27 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="generateButton">Проверить</button>
-    <div id = "lamp">
-      <img src = "assets/off.png"/>
+    <div class="content">
+    <div class = 'element'>
+      <button id="volumeButton" class = 'elemButton'>Включить</button>
+      <div id = "microphone">
+        <img src = "assets/microphoneOff.png"/>
+      </div>
+      <div class="volumeBox">
+        <input type="range" id="volume" name="volume" min="0" max="100" value="0" step="1" />
+      </div>
+      <div class = 'volInfo'>
+        Громкость: <span id = 'vol'>0</span>
+      </div>
     </div>
-    <div id="fileContent"></div>
+    <div class = 'element'>
+      <button id="generateButton" class = 'elemButton'>Проверить</button>
+      <div id = "lamp">
+        <img src = "assets/off.png"/>
+      </div>
+      <div id="fileContent"></div>
+    </div>
+  </div>
     <script src="js/script.js"></script>
     <script>
       let vr = 'test variable';
